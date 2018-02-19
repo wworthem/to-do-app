@@ -28,7 +28,7 @@ onReady(){
 
      //empty the input
      newToDoText.value = ' ';
-
+  
      });
 };
 
