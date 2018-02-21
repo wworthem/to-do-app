@@ -1,39 +1,54 @@
 
 function onReady() {
+  let toDos = [];
   const addToDoForm = document.getElementById('addToDoForm');
   const newToDoText = document.getElementById('newToDoText');
-  const toDoList    = document.getElementById('toDoList');
 
-  addToDoForm.addEventListener('submit',() => {
-    event.preventDefault();
+  function createNewToDo(){
+    if (!newToDoText.value) {return;}
 
-    //get the text from input and assign to title
-    let title = newToDoText.value;
+      toDos.push( {
+        title: newToDoText.value,
+        complete: false
+      });
 
-    //create a new li
-    let newLi = document.createElement('li');
+      newToDoText.value = '';
 
-    //create a new input
-    let checkbox = document.createElement('input');
+      renderTheUI();
+  } //end of createNewToDo...
 
-    //set the input's type to checkbox
-    checkbox.type = "checkbox";
+  function renderTheUI() {
+    const toDoList = document.getElementById('toDoList');
+    toDoList.textContent = '';
 
-    //set the title
-    newLi.textContent = title;
-     //attach the checkbox to the li
-     newLi.appendChild(checkbox);
+    toDos.forEach(function(toDo)) {
+      //const newToDo = document.createElement('li');
+      const newLi = document.createElement('li');
+      const checkbox = document.createElement('input');
+      checkbox.type = "checkbox";
 
-     //attach the li to the ul
-     toDoList.appendChild(newLi));
+      const title = document.createElement('span');
+      title.textContent = toDo.title;
+      newLi.textContent = toDo.title;
 
-     //empty the input
-     newToDoText.value = ' ';
+      toDoList.appendChild(newLi);
+      newLi.appendChild(checkbox);
+    }); //end of forEach loop...
 
-     });
-}
+
+  } //end of renderTheUI...
+
+  addToDoForm.addEventListener('submit', event => {
+      event.preventDefault();
+      createNewToDo();
+      newToDoText.value = '';
+  });
+
+  renderTheUI();
+  //const toDoList = document.getElementById('toDoList');
+} // end of OnReady function...
 
 window.onload = function() {
-  //alert("The window has loaded!");
+
   onReady();
 };
