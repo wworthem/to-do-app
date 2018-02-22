@@ -33,9 +33,11 @@ function onReady() {
       const checkbox = document.createElement('input');
       checkbox.type = "checkbox";
 
+//create delete button...
       const btn = document.createElement("BUTTON");
       const t = document.createTextNode("DELETE");
       btn.appendChild(t);
+
 
       const title = document.createElement('span');
 
