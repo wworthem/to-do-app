@@ -33,6 +33,10 @@ function onReady() {
       const checkbox = document.createElement('input');
       checkbox.type = "checkbox";
 
+      const btn = document.createElement("BUTTON");
+      const t = document.createTextNode("DELETE");
+      btn.appendChild(t);
+
       const title = document.createElement('span');
 
       title.textContent = toDo.title;
@@ -41,6 +45,7 @@ function onReady() {
 
       toDoList.appendChild(newLi);
       newLi.appendChild(checkbox);
+      newLi.appendChild(btn);
     }); //end of forEach loop...
 
 
